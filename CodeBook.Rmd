@@ -46,7 +46,8 @@ Activity <- bind_rows(TestActivity, TrainActivity)
 Subject <- bind_rows(TestSubject, TrainSubject)
 ```
 
-3. The script reads and applies descriptive variable names as column headers from features.txt, and removes the unnecessary variables. 
+3. The script reads and applies descriptive variable names as column headers from features.txt, 
+and removes the unnecessary variables. 
 
 ```{r cars}
 ##Read & Apply Descriptive Variable Names as Column Headers
@@ -56,8 +57,9 @@ names(Activity)<-c("Activity")
 rm(TestData, TrainData, TestActivity, TrainActivity, TestSubject, TrainSubject)
 ```
 
-4. The script extracts the columns containing mean and standard deviation measurements, excluding other measurements from the analysis.
-The activity numbers are substituted with labels from the activity_labels.txt and invalid characters "()" are removed from the column names.
+4. The script extracts the columns containing mean and standard deviation measurements, 
+excluding other measurements from the analysis. The activity numbers are substituted with labels 
+from the activity_labels.txt and invalid characters "()" are removed from the column names.
 StdMean - temp holder of the Mean and Standard Deviation in Features_Labels
 Extracted - contains the subset of Mean and Standard Deviation information from RawData
 
@@ -73,8 +75,8 @@ Activity_Labels[,2] = gsub("_", " ", tolower(as.character(Activity_Labels[,2])))
 Activity[,1] <- Activity_Labels[Activity[,1],2]
 ```
 
-5. The script generates a CleanedData.txt file containing all the data from Subject, Activity, and the Extracted RawData, grouped by subject and activity.
-Then removes the unnecessary variables. 
+5. The script generates a CleanedData.txt file containing all the data from Subject, Activity, 
+and the Extracted RawData, grouped by subject and activity. Then removes the unnecessary variables. 
 CleanedData - contains all the data from Subject, Activity, and the Extracted RawData
 
 ```{r cars}
@@ -84,7 +86,8 @@ rm(Activity, Activity_Labels, Extracted, Features_Labels, RawData, Subject)
 write.table(CleanedData, "CleanedData.txt")
 ```
 
-6. The script generates a TidyData.txt file containing a summary of the CleanedData, grouped by subject and activity with the mean of every measurement column.
+6. The script generates a TidyData.txt file containing a summary of the CleanedData, 
+grouped by subject and activity with the mean of every measurement column.
 TidyData - contains the summarized data from CleanedData
 
 ```{r cars}
@@ -101,7 +104,9 @@ Each line in run_analysis.R is commented. Reference the file for more informatio
 SubjectID - The id of the experiment participant.
 Activity - The name of the activity that the measurements correspond to, like LAYING or WALKING.
 
-All of the following fields represent the mean of recorded data points for the given subject and activity. The detailed description of the different measurement types can be found in the features_info.txt file included in the data zip file.
+All of the following fields represent the mean of recorded data points for the given subject and activity. 
+The detailed description of the different measurement types can be found in the features_info.txt file 
+included in the data zip file.
 
 tBodyAcc_mean_X
 tBodyAcc_mean_Y
@@ -173,4 +178,5 @@ fBodyGyroJerkMag_std
 
 ## Additional Information
 
-Detailed information on the experiment and the data can be found in the README.txt and features_info.txt files included in the experiment data zip file or find more information on the dataset homepage.
+Detailed information on the experiment and the data can be found in the README.txt and features_info.txt files 
+included in the experiment data zip file or find more information on the dataset homepage.
